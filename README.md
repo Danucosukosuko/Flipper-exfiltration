@@ -10,6 +10,13 @@ Vuelve a ejecutar el script y hará el resto.
 
 ## ¿Cómo hacerlo funcionar?
 
+
+Modifica la línea 13:
+
+![image](https://github.com/user-attachments/assets/1fdccb1f-e8a4-4cb1-bf29-4b4254de2b8c)
+
+
+
 # Descargo de responsabilidad.
 
 
