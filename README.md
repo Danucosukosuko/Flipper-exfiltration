@@ -8,6 +8,8 @@ Si te tira:
 Vuelve a ejecutar el script y hará el resto.
 
 
+## ¿Cómo hacerlo funcionar?
+
 # Descargo de responsabilidad.
 
 
