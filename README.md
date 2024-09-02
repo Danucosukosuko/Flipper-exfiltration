@@ -1,5 +1,5 @@
 # Exfiltra contraseñas con el Flipper Zero
-Este script js te permite sacar las contraseñas de Wi-Fi registradas en el equipo.
+Este script js te permite sacar las contraseñas de Wi-Fi registradas en el equipo víctima.
 
 Si te tira:
 
