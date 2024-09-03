@@ -11,13 +11,13 @@ Vuelve a ejecutar el script y hará el resto.
 ## ¿Cómo hacerlo funcionar?
 
 
-Modifica la línea 13:
+1. Modifica la línea 13:
 
 ![image](https://github.com/user-attachments/assets/1fdccb1f-e8a4-4cb1-bf29-4b4254de2b8c)
 
+2. Crea una carpeta en /ext/apps/scripts/payloads y dentro pon un sucess.mp3 (Que es el sonido que se reproducirá cuando el flipper haya exfiltrado las contraseñas.
 
-# Uso
-Crea una carpeta en /ext/apps/scripts/payloads y dentro pon un sucess.mp3 (Que es el sonido que se reproducirá cuando el flipper haya exfiltrado las contraseñas
+3. Conecta el Flipper por USB a la máquina víctima.
 
 
 # Descargo de responsabilidad.
