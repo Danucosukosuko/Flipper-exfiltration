@@ -16,6 +16,9 @@ Modifica la línea 13:
 ![image](https://github.com/user-attachments/assets/1fdccb1f-e8a4-4cb1-bf29-4b4254de2b8c)
 
 
+# Uso
+Crea una carpeta en /ext/apps/scripts/payloads y dentro pon un sucess.mp3 (Que es el sonido que se reproducirá cuando el flipper haya exfiltrado las contraseñas
+
 
 # Descargo de responsabilidad.
 
